@@ -1,0 +1,159 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+* {
+    font-family: 'Roboto', sans-serif;
+}
+
+body {
+    display: flex;
+    align-content: center;
+    align-items: center;
+    justify-content: center;
+
+    height: 100vh;
+    margin: 0;
+}
+
+.winner-screen {display: none;}
+
+.winner-screen.show {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    position: fixed;
+    
+    width: 100%;
+    height: 100%;
+
+    font-size: 3rem;
+
+    color: white;
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.restart-game-button {
+    width: 180px;
+    height: 40px;
+
+    font-size: 1.5rem;
+
+    background-color: transparent;
+    color: white;
+    border: 2px solid white;
+
+    cursor: pointer;
+
+    outline: none;
+}
+
+.restart-game-button:hover {
+    background-color: white;
+    color: black;
+}
+
+.game {
+    display: grid;
+    grid-template-columns: repeat(3, 100px);
+    grid-template-rows: repeat(3, 100px);;
+    grid-gap: 2px;
+
+    background-color: black;
+}
+
+.area {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    position: relative;
+
+    background-color: white;
+
+    cursor: pointer;
+}
+
+.area.x::before,
+.area.x::after,
+.game.x .area:not(.x):not(.circle):hover::before,
+.game.x .area:not(.x):not(.circle):hover::after
+{
+    content: '';
+    position: absolute;
+    
+    width: 15%;
+    height: 90%;
+    background-color: black;
+}
+
+.game.x .area:not(.x):not(.circle):hover::before,
+.area.x::before 
+{
+    transform: rotate(45deg);
+}
+
+.game.x .area:not(.x):not(.circle):hover::after,
+.area.x::after 
+{
+    transform: rotate(-45deg);
+}
+.game.x .area:not(.x):not(.circle):hover::before,
+.game.x .area:not(.x):not(.circle):hover::after 
+{
+    background-color: lightgrey;
+}
+
+.area.circle::before,
+.area.circle::after,
+.game.circle .area:not(.x):not(.circle):hover::before,
+.game.circle .area:not(.x):not(.circle):hover::after
+{
+    content: '';
+    position: absolute;
+}
+
+.area.circle::before,
+.game.circle .area:not(.x):not(.circle):hover::before
+{
+    width: 80%;
+    height: 80%;
+
+    background-color: black;
+    border-radius: 50%;
+}
+
+.area.circle::after,
+.game.circle .area:not(.x):not(.circle):hover::after
+{
+    width: 50%;
+    height: 50%;
+
+    background-color: inherit;
+    border-radius: 50%;
+}
+
+.game.circle .area:not(.x):not(.circle):hover::before
+{
+    background-color: lightgrey;
+}
+
+.area.x,
+.area.circle
+{
+    cursor: not-allowed;
+}
+
+#mute-unmute-button {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+
+    width: 20px;
+    height: 20px;
+
+    padding: 5px;
+    font-size: 24px;
+
+    cursor: pointer;
+}
